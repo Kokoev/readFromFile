@@ -1,0 +1,15 @@
+apply plugin: "java"
+
+mavenLocal()
+
+mavenCentral()
+
+jar.doFirst(){
+    version = version + "." + new File("build.number").text;
+}
+
+
+jar.doLast() {
+    File file = new File("build.number");
+    file.write String.valueOf(Integer.parseInt(file.text) + 1);
+}
